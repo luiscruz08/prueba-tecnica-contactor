@@ -4,14 +4,20 @@ import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.lcr.contactos.domain.model.Contact
+import com.lcr.contactos.domain.model.InvalidContactException
+import com.lcr.contactos.domain.usecase.AddContactUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AddContactViewModel @Inject constructor(): ViewModel() {
+class AddContactViewModel @Inject constructor(
+    private val addContactUseCase: AddContactUseCase
+): ViewModel() {
 
     private val _contact = mutableStateOf(Contact(
         name = "",
@@ -28,7 +34,26 @@ class AddContactViewModel @Inject constructor(): ViewModel() {
     fun onEvent(event: AddContactEvent) {
         when (event) {
             AddContactEvent.AddContact ->{
-                Log.e("AddContactViewModel", "onEvent: ${_contact.value}")
+                viewModelScope.launch {
+                    try {
+                        addContactUseCase.invoke(
+                            contact = Contact(
+                                name = contact.value.name,
+                                lastName = contact.value.lastName,
+                                phoneNumber = contact.value.phoneNumber,
+                                email = contact.value.email,
+                                imageUrl = contact.value.imageUrl
+                            ))
+                    }catch (e: InvalidContactException){
+                        _eventFlow.emit(
+                            AddContactUiEvent.ShowSnackBar(
+                                message = e.message ?: "Error desconocido"
+                            )
+                        )
+                    }
+                }
+
+
             }
             is AddContactEvent.EnteredEmail -> _contact.value =
                 _contact.value.copy(email = event.value)

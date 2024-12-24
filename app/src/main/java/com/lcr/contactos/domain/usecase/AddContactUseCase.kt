@@ -3,9 +3,10 @@ package com.lcr.contactos.domain.usecase
 import com.lcr.contactos.domain.model.Contact
 import com.lcr.contactos.domain.model.InvalidContactException
 import com.lcr.contactos.domain.repository.ContactRepository
+import javax.inject.Inject
 import kotlin.jvm.Throws
 
-class AddContactUseCase(private val repository: ContactRepository) {
+class AddContactUseCase @Inject constructor(private val repository: ContactRepository) {
 
     @Throws(InvalidContactException::class)
     suspend operator fun invoke(contact: Contact){
