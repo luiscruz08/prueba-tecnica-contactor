@@ -21,7 +21,9 @@ fun NavigationWrapper() {
         }
 
         composable<AddContact>{
-            AddContactScreen()
+            AddContactScreen(){
+                navController.popBackStack()
+            }
         }
     }
 }

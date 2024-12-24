@@ -1,6 +1,5 @@
 package com.lcr.contactos.presentation.addcontact
 
-import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -44,6 +43,7 @@ class AddContactViewModel @Inject constructor(
                                 email = contact.value.email,
                                 imageUrl = contact.value.imageUrl
                             ))
+                        _eventFlow.emit(AddContactUiEvent.AddContact)
                     }catch (e: InvalidContactException){
                         _eventFlow.emit(
                             AddContactUiEvent.ShowSnackBar(
