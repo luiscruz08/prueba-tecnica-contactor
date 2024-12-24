@@ -2,6 +2,15 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+
+    //KSP
+    alias(libs.plugins.ksp)
+
+    //HILT
+    alias(libs.plugins.hilt)
+
+    //Serialization for navigation
+    alias(libs.plugins.jetbrainsKotlinSerialization)
 }
 
 android {
@@ -56,4 +65,18 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    //HILT
+    implementation(libs.hilt)
+    ksp(libs.hilt.compiler)
+
+    //ROOM
+    implementation(libs.room.runtime)
+    annotationProcessor(libs.room.compiler)
+    implementation(libs.room.ktx)
+    ksp(libs.room.ktx)
+
+    //Navigation
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.kotlin.serialization.json)
 }

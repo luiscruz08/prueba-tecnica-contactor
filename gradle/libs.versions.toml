@@ -1,13 +1,26 @@
 [versions]
-agp = "8.7.1"
-kotlin = "2.0.0"
+agp = "8.7.3"
+kotlin = "2.1.0"
 coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.9.3"
-composeBom = "2024.04.01"
+composeBom = "2024.12.01"
+
+#KSP
+ksp = "2.0.21-1.0.25"
+
+#HILT
+hilt = "2.51.1"
+
+#ROOM
+room = "2.6.1"
+
+#Navigation
+navigationCompose = "2.8.0"
+kotlinSerialization = "1.6.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -25,8 +38,30 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 
+#HILT
+hilt = { group="com.google.dagger",name = "hilt-android",version.ref ="hilt"}
+hilt-compiler = { group="com.google.dagger",name = "hilt-android-compiler",version.ref ="hilt"}
+
+#ROOM
+room-runtime = {group="androidx.room",name="room-runtime",version.ref="room"}
+room-compiler = {group="androidx.room",name="room-compiler",version.ref="room"}
+room-ktx = {group="androidx.room",name="room-ktx",version.ref="room"}
+
+#Navigation
+androidx-navigation-compose =  {group="androidx.navigation",name="navigation-compose",version.ref="navigationCompose"}
+kotlin-serialization-json =  {group="org.jetbrains.kotlinx",name="kotlinx-serialization-json",version.ref="kotlinSerialization"}
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+#KSP
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
+#HILT
+hilt = {id="com.google.dagger.hilt.android" ,version.ref = "hilt"}
+
+#Navigation / Serialization
+jetbrainsKotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 
