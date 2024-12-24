@@ -21,9 +21,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
-fun AddContactScreen() {
+fun AddContactScreen(viewModel: AddContactViewModel = hiltViewModel()) {
+
+    val state = viewModel.state.value
 
     Scaffold(
         modifier = Modifier.imePadding()
@@ -86,7 +89,7 @@ fun AddContactScreen() {
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth(),
-                onClick = { /*TODO*/ }) {
+                onClick = {  }) {
                 Text(text = "Guardar")
             }
         }
