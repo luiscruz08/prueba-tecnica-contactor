@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.lcr.contactos.presentation.addcontact.AddContactScreen
 import com.lcr.contactos.presentation.contacts.ContactsScreen
 
 @Composable
@@ -14,7 +15,13 @@ fun NavigationWrapper() {
         startDestination = Contacts
     ) {
         composable<Contacts>{
-            ContactsScreen()
+            ContactsScreen(){
+                navController.navigate(AddContact)
+            }
+        }
+
+        composable<AddContact>{
+            AddContactScreen()
         }
     }
 }

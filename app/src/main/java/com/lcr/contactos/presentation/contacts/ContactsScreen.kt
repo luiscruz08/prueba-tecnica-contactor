@@ -8,17 +8,15 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.lcr.contactos.domain.model.Contact
 
 
 @Composable
-fun ContactsScreen(){
+fun ContactsScreen(addContact: () -> Unit){
    val contact =   Contact(
             name = "John",
             lastName = "Doe",
@@ -29,7 +27,7 @@ fun ContactsScreen(){
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
-                onClick = {}
+                onClick = {addContact()}
             )
             {
                 Icon(
@@ -55,5 +53,7 @@ fun ContactsScreen(){
 @Preview(showBackground = true)
 @Composable
 fun ContactsScreenPreview(){
-    ContactsScreen()
+    ContactsScreen(){
+
+    }
 }
