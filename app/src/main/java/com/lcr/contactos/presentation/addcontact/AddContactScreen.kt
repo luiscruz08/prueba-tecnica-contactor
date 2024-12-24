@@ -26,7 +26,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 @Composable
 fun AddContactScreen(viewModel: AddContactViewModel = hiltViewModel()) {
 
-    val state = viewModel.state.value
+    val contactState = viewModel.contact.value
 
     Scaffold(
         modifier = Modifier.imePadding()
@@ -46,42 +46,42 @@ fun AddContactScreen(viewModel: AddContactViewModel = hiltViewModel()) {
             )
 
             CustomTextField(
-                text = "",
+                text = contactState.name,
                 hint = "Nombre",
                 modifier = Modifier
                     .fillMaxWidth(),
                 onValueChange = {
-
+                    viewModel.onEvent(AddContactEvent.EnteredName(it))
                 }
             )
 
             CustomTextField(
-                text = "",
+                text = contactState.lastName,
                 hint = "Apellido",
                 modifier = Modifier
                     .fillMaxWidth(),
                 onValueChange = {
-
+                    viewModel.onEvent(AddContactEvent.EnteredLastName(it))
                 }
             )
 
             CustomTextField(
-                text = "",
+                text = contactState.email,
                 hint = "Correo",
                 modifier = Modifier
                     .fillMaxWidth(),
                 onValueChange = {
-
+                    viewModel.onEvent(AddContactEvent.EnteredEmail(it))
                 }
             )
 
             CustomTextField(
-                text = "",
+                text = contactState.phoneNumber,
                 hint = "Teléfono",
                 modifier = Modifier
                     .fillMaxWidth(),
                 onValueChange = {
-
+                    viewModel.onEvent(AddContactEvent.EnteredPhone(it))
                 }
             )
             Spacer(modifier = Modifier.weight(1f))
@@ -89,7 +89,7 @@ fun AddContactScreen(viewModel: AddContactViewModel = hiltViewModel()) {
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth(),
-                onClick = {  }) {
+                onClick = { viewModel.onEvent(AddContactEvent.AddContact) }) {
                 Text(text = "Guardar")
             }
         }
