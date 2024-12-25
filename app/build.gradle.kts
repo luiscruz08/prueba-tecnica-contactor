@@ -84,4 +84,7 @@ dependencies {
     //Responsive
     implementation(libs.androidx.adaptive.android)
 
+    testImplementation ("junit:junit:4.13.2")
+    testImplementation ("com.google.truth:truth:1.1.3")
+
 }
