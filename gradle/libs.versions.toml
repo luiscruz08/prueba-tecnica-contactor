@@ -23,6 +23,10 @@ navigationCompose = "2.8.0"
 kotlinSerialization = "1.6.3"
 hiltNavigation = "1.2.0"
 
+#Responsividad
+adaptiveAndroid = "1.0.0"
+
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -53,6 +57,9 @@ androidx-navigation-compose =  {group="androidx.navigation",name="navigation-com
 kotlin-serialization-json =  {group="org.jetbrains.kotlinx",name="kotlinx-serialization-json",version.ref="kotlinSerialization"}
 hilt-navigation = {group = "androidx.hilt", name = "hilt-navigation-compose",version.ref = "hiltNavigation"}
 
+
+#Responsividad
+androidx-adaptive-android = { group = "androidx.compose.material3.adaptive", name = "adaptive-android", version.ref = "adaptiveAndroid" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -15,7 +15,9 @@ fun NavigationWrapper() {
         startDestination = Contacts
     ) {
         composable<Contacts>{
-            ContactsScreen(){
+            ContactsScreen(selectContact = {
+
+            }){
                 navController.navigate(AddContact)
             }
         }

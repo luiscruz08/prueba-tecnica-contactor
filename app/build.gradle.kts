@@ -80,4 +80,8 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.kotlin.serialization.json)
     implementation(libs.hilt.navigation)
+
+    //Responsive
+    implementation(libs.androidx.adaptive.android)
+
 }
